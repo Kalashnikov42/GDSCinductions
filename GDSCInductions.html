@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSC Login Portal</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="script.js">
+     // Initializing Google Sign-In
+gapi.load('auth2', function() {
+    gapi.auth2.init({
+        client_id: '745685465332-icp6042nibcltgdvlhum99al08sh0h2t.apps.googleusercontent.com',
+    });
+});
+
+// Function to handle Google Sign-In
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var isAdmin = document.getElementById('admin').checked;
+
+    if (isAdmin) {
+        alert('Admin logged in: ' + profile.getName());
+    } else {
+        alert('User logged in: ' + profile.getName());
+    }
+}
+
+function getURL() {
+        alert("The URL of this page is: " + window.location.href);
+    }
+    </script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#login-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px;
+    background-color: #f5f5f5;
+}
+
+#google-login {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#user-type {
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <h1>Welcome to the GDSC login Portal!</h1>
+    <div id="login-container">
+        <h2>Login</h2>
+        <button id="google-login">Sign in with Google</button>
+    </div>
+    <div id="user-type">
+        <label for="admin">Are you an admin?</label>
+        <input type="checkbox" id="admin" name="admin">
+    </div>
+</body>
+</html>
